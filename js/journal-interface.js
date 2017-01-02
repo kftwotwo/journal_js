@@ -11,6 +11,10 @@ $(document).ready(function() {
         <div class="card-content">
           <span class="card-title">${entry.title}</span>
           <p>${entry.body}</p>
+          <h6 class="label cyan-text text-darken-4">Meta Details</h6>
+          <p>Vowels: ${entry.vowels()}</p>
+          <p>Consonants: ${entry.consonants()}</p>
+          <p>Teaser: ${entry.getTeaser()}</p>
         </div>
       </div>`);
       $('#title').val("");

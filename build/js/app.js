@@ -11,6 +11,19 @@ Entry.prototype.vowels = function () {
   }).length
 };
 
+Entry.prototype.consonants = function () {
+  return this.body.length - this.vowels();
+};
+
+Entry.prototype.getTeaser = function () {
+  var words = this.body.split(" ");
+  var output = words.slice(0, 8).join(" ");
+  if(words.length > 8) {
+    output += "...";
+  }
+  return output;
+};
+
 exports.Entry = Entry;
 
 },{}],2:[function(require,module,exports){
@@ -22,16 +35,19 @@ $(document).ready(function() {
     var title = $('#title').val();
     var body = $('#body').val();
     var entry = new Entry(title, body);
-    $('#title').empty();
-    $('#body').empty();
     $('#journal').append(`
       <div class="card cyan white-text">
         <div class="card-content">
           <span class="card-title">${entry.title}</span>
           <p>${entry.body}</p>
+          <h6 class="label cyan-text text-darken-4">Meta Details</h6>
+          <p>Vowels: ${entry.vowels()}</p>
+          <p>Consonants: ${entry.consonants()}</p>
+          <p>Teaser: ${entry.getTeaser()}</p>
         </div>
       </div>`);
-
+      $('#title').val("");
+      $('#body').val("");
   });
 
 });

@@ -10,4 +10,17 @@ Entry.prototype.vowels = function () {
   }).length
 };
 
+Entry.prototype.consonants = function () {
+  return this.body.length - this.vowels();
+};
+
+Entry.prototype.getTeaser = function () {
+  var words = this.body.split(" ");
+  var output = words.slice(0, 8).join(" ");
+  if(words.length > 8) {
+    output += "...";
+  }
+  return output;
+};
+
 exports.Entry = Entry;

@@ -44,3 +44,7 @@ gulp.task('build', ['clean'], function() {
     gulp.start('jsBrowserify');
   }
 });
+
+gulp.task('stream', ['build'], function() {
+  return gulp.watch('js/**/*.js', ['build'])
+});
